@@ -6,8 +6,8 @@
 // 全面そろえる
 void init_cube(CUBE *p_cube) {
     for (int i = 0; i < 9; i++) {
-        p_cube->cube[TOP_FACE][i] = WHITE;
-        p_cube->cube[BOTTOM_FACE][i] = YELLOW;
+        p_cube->cube[UP_FACE][i] = WHITE;
+        p_cube->cube[DOWN_FACE][i] = YELLOW;
         p_cube->cube[FRONT_FACE][i] = RED;
         p_cube->cube[BACK_FACE][i] = ORANGE;
         p_cube->cube[LEFT_FACE][i] = BLUE;
@@ -36,7 +36,7 @@ void display_cube(const CUBE *p_cube) {
     for (int i = 0; i < 3; i++) {
         printf("         ");  // 見た目のための空白
         for (int j = 0; j < 3; j++) {
-            int color_index = p_cube->cube[TOP_FACE][3 * i + j];
+            int color_index = p_cube->cube[UP_FACE][3 * i + j];
             printf("%s %c %s", color_sequences[color_index],
                    color_chars[color_index], RESET_COLOR);
         }
@@ -79,7 +79,7 @@ void display_cube(const CUBE *p_cube) {
     for (int i = 0; i < 3; i++) {
         printf("         ");  // 見た目のための空白
         for (int j = 0; j < 3; j++) {
-            int color_index = p_cube->cube[BOTTOM_FACE][3 * i + j];
+            int color_index = p_cube->cube[DOWN_FACE][3 * i + j];
             printf("%s %c %s", color_sequences[color_index],
                    color_chars[color_index], RESET_COLOR);
         }
@@ -88,22 +88,22 @@ void display_cube(const CUBE *p_cube) {
 }
 
 // 上面を90度時計回りで回転
-void rotate_T(CUBE *p_cube) {
+void rotate_U(CUBE *p_cube) {
     // TOP_FACEの移動
     // // 角
-    int temp0 = p_cube->cube[TOP_FACE][0];
-    int temp1 = p_cube->cube[TOP_FACE][8];
-    p_cube->cube[TOP_FACE][0] = p_cube->cube[TOP_FACE][6];
-    p_cube->cube[TOP_FACE][6] = temp1;
-    p_cube->cube[TOP_FACE][8] = p_cube->cube[TOP_FACE][2];
-    p_cube->cube[TOP_FACE][2] = temp0;
+    int temp0 = p_cube->cube[UP_FACE][0];
+    int temp1 = p_cube->cube[UP_FACE][8];
+    p_cube->cube[UP_FACE][0] = p_cube->cube[UP_FACE][6];
+    p_cube->cube[UP_FACE][6] = temp1;
+    p_cube->cube[UP_FACE][8] = p_cube->cube[UP_FACE][2];
+    p_cube->cube[UP_FACE][2] = temp0;
     // // 真ん中
-    temp0 = p_cube->cube[TOP_FACE][1];
-    temp1 = p_cube->cube[TOP_FACE][7];
-    p_cube->cube[TOP_FACE][1] = p_cube->cube[TOP_FACE][3];
-    p_cube->cube[TOP_FACE][3] = temp1;
-    p_cube->cube[TOP_FACE][7] = p_cube->cube[TOP_FACE][5];
-    p_cube->cube[TOP_FACE][5] = temp0;
+    temp0 = p_cube->cube[UP_FACE][1];
+    temp1 = p_cube->cube[UP_FACE][7];
+    p_cube->cube[UP_FACE][1] = p_cube->cube[UP_FACE][3];
+    p_cube->cube[UP_FACE][3] = temp1;
+    p_cube->cube[UP_FACE][7] = p_cube->cube[UP_FACE][5];
+    p_cube->cube[UP_FACE][5] = temp0;
 
     // 側面の移動
     int temp_side[3];
@@ -129,20 +129,14 @@ void rotate_T(CUBE *p_cube) {
 }
 
 // 上面を2回90度回りで回転
-void two_rotate_T(CUBE *p_cube) {
-    rotate_T(p_cube);
-    rotate_T(p_cube);
+void two_rotate_U(CUBE *p_cube) {
+    rotate_U(p_cube);
+    rotate_U(p_cube);
 }
 
 // 上面を3回90度周りで回転(逆向き一回と同じ)
-void reverse_rotate_T(CUBE *p_cube) {
-    rotate_T(p_cube);
-    rotate_T(p_cube);
-    rotate_T(p_cube);
+void reverse_rotate_U(CUBE *p_cube) {
+    rotate_U(p_cube);
+    rotate_U(p_cube);
+    rotate_U(p_cube);
 }
-
-void rotate_B(CUBE *p_cube);
-void rotate_F(CUBE *p_cube);
-void rotate_B(CUBE *p_cube);
-void rotate_L(CUBE *p_cube);
-void rotate_R(CUBE *p_cube);
