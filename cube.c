@@ -1,6 +1,7 @@
 #include "cube.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 // cubeの初期化
 // 全面そろえる
@@ -85,6 +86,8 @@ void display_cube(const CUBE* p_cube) {
         }
         printf("\n");
     }
+
+    printf("\n");
 }
 
 // 上面を90度時計回りで回転
@@ -405,4 +408,70 @@ void reverse_rotate_D(CUBE* p_cube) {
     rotate_D(p_cube);
     rotate_D(p_cube);
     rotate_D(p_cube);
+}
+
+// cubeをシャッフル
+void shuffle_cube(CUBE* p_cube, int num_moves) {
+    printf("%d手シャッフル\n", num_moves);
+
+    for (int i = 0; i < num_moves; i++) {
+        int move = rand() % 18;
+
+        switch (move) {
+            case 0:
+                rotate_U(p_cube);
+                break;
+            case 1:
+                two_rotate_U(p_cube);
+                break;
+            case 2:
+                reverse_rotate_U(p_cube);
+                break;
+            case 3:
+                rotate_F(p_cube);
+                break;
+            case 4:
+                two_rotate_F(p_cube);
+                break;
+            case 5:
+                reverse_rotate_F(p_cube);
+                break;
+            case 6:
+                rotate_R(p_cube);
+                break;
+            case 7:
+                two_rotate_R(p_cube);
+                break;
+            case 8:
+                reverse_rotate_R(p_cube);
+                break;
+            case 9:
+                rotate_L(p_cube);
+                break;
+            case 10:
+                two_rotate_L(p_cube);
+                break;
+            case 11:
+                reverse_rotate_L(p_cube);
+                break;
+            case 12:
+                rotate_B(p_cube);
+                break;
+            case 13:
+                two_rotate_B(p_cube);
+                break;
+            case 14:
+                reverse_rotate_B(p_cube);
+                break;
+            case 15:
+                rotate_D(p_cube);
+                break;
+            case 16:
+                two_rotate_D(p_cube);
+                break;
+            case 17:
+                reverse_rotate_D(p_cube);
+                break;
+        }
+    }
 }

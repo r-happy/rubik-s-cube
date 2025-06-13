@@ -23,6 +23,7 @@ typedef struct _cube CUBE;
 // 関数のプロトタイプ
 void init_cube(CUBE *p_cube);
 void display_cube(const CUBE *p_cube);
+
 void rotate_U(CUBE *p_cube);
 void two_rotate_U(CUBE *p_cube);
 void reverse_rotate_U(CUBE *p_cube);
@@ -38,3 +39,5 @@ void reverse_rotate_L(CUBE *p_cube);
 void rotate_R(CUBE *p_cube);
 void two_rotate_R(CUBE *p_cube);
 void reverse_rotate_R(CUBE *p_cube);
+
+void shuffle_cube(CUBE *p_cube, int num_moves);
