@@ -7,8 +7,10 @@ int main(void) {
 
     init_cube(&cube);
     display_cube(&cube);
-    rotate_T(&cube);
-    rotate_T(&cube);
+    two_rotate_T(&cube);
+    display_cube(&cube);
+    reverse_rotate_T(&cube);
+    reverse_rotate_T(&cube);
     display_cube(&cube);
 
     return 0;

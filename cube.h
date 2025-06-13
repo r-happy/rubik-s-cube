@@ -24,6 +24,8 @@ typedef struct _cube CUBE;
 void init_cube(CUBE *p_cube);
 void display_cube(const CUBE *p_cube);
 void rotate_T(CUBE *p_cube);
+void two_rotate_T(CUBE *p_cube);
+void reverse_rotate_T(CUBE *p_cube);
 void rotate_B(CUBE *p_cube);
 void rotate_F(CUBE *p_cube);
 void rotate_B(CUBE *p_cube);

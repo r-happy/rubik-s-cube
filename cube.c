@@ -127,6 +127,20 @@ void rotate_T(CUBE *p_cube) {
         p_cube->cube[LEFT_FACE][i] = temp_side[i];
     }
 }
+
+// 上面を2回90度回りで回転
+void two_rotate_T(CUBE *p_cube) {
+    rotate_T(p_cube);
+    rotate_T(p_cube);
+}
+
+// 上面を3回90度周りで回転(逆向き一回と同じ)
+void reverse_rotate_T(CUBE *p_cube) {
+    rotate_T(p_cube);
+    rotate_T(p_cube);
+    rotate_T(p_cube);
+}
+
 void rotate_B(CUBE *p_cube);
 void rotate_F(CUBE *p_cube);
 void rotate_B(CUBE *p_cube);
